@@ -1,0 +1,7 @@
+ext {
+    viewmodel = "2.0.0-GA"
+
+generalDependencies = [
+        viewmodel                       : "org.koin:koin-androidx-viewmodel:${viewmodel}",
+    ]
+}
