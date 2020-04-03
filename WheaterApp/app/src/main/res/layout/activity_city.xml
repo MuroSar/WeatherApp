@@ -41,6 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/validCityTextView" />
 
     <Button
+        android:id="@+id/buttonDone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_main_done"
