@@ -28,6 +28,7 @@ class CityMainActivity : AppCompatActivity() {
 
     private fun updateUI(weatherData: Event<Data<City>>){
         when(weatherData.peekContent().responseType) {
+            //TODO catch every response type
         }
     }
 
