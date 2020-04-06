@@ -21,9 +21,7 @@ class CityMainActivity : AppCompatActivity() {
 
         viewModel.mainState.observe(this, Observer { updateUI(it) })
 
-        buttonDone.setOnClickListener {
-            viewModel.buttonDonePressed()
-            nextActivityIntent()}
+        buttonDone.setOnClickListener { viewModel.buttonDonePressed() }
     }
 
     private fun updateUI(weatherData: Event<Data<City>>){
