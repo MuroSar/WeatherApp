@@ -13,16 +13,16 @@ import kotlinx.android.synthetic.main.activity_city.buttonDone
 
 class CityMainActivity : AppCompatActivity() {
 
-    private val viewmodel: CityMainViewModel = CityMainViewModel()
+    private val viewModel: CityMainViewModel = CityMainViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_city)
 
-        viewmodel.mainState.observe(this, Observer { updateUI(it) })
+        viewModel.mainState.observe(this, Observer { updateUI(it) })
 
         buttonDone.setOnClickListener {
-            viewmodel.buttonDonePressed()
+            viewModel.buttonDonePressed()
             nextActivityIntent()}
     }
 
