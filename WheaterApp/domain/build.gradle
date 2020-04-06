@@ -1,5 +1,4 @@
 apply plugin: 'kotlin'
 
 dependencies {
-    implementation "org.koin:koin-androidx-viewmodel:2.0.0-GA"
 }
