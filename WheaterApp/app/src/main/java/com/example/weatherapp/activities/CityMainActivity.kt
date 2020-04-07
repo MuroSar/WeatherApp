@@ -14,10 +14,11 @@ import com.example.weatherapp.utils.startActivity
 import com.example.weatherapp.viewmodels.CityMainViewModel
 import kotlinx.android.synthetic.main.activity_city.buttonDone
 import kotlinx.android.synthetic.main.activity_city.main_edit_text_country
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CityMainActivity : AppCompatActivity(), CityContract.View {
 
-    private val viewModel: CityMainViewModel = CityMainViewModel()
+    private val viewModel by viewModel<CityMainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +27,6 @@ class CityMainActivity : AppCompatActivity(), CityContract.View {
         viewModel.mainState.observe(this, Observer { updateUI(it) })
 
         buttonDone.setOnClickListener { viewModel.buttonDonePressed() }
-
-        getCityList()
     }
 
     private fun updateUI(weatherData: Event<Data<City>>){
@@ -41,6 +40,7 @@ class CityMainActivity : AppCompatActivity(), CityContract.View {
         startActivity<DetailsCityActivity>()
     }
 
+    //It's gonna be used in the next PR.
     override fun getCityList() {
         val adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listOfCity)
         main_edit_text_country.setAdapter(adapter)
