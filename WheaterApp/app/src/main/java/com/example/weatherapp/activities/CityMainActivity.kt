@@ -25,9 +25,7 @@ class CityMainActivity : AppCompatActivity(), CityContract.View {
 
         viewModel.mainState.observe(this, Observer { updateUI(it) })
 
-        buttonDone.setOnClickListener { viewModel.buttonDonePressed()
-            nextActivityIntent()
-        }
+        buttonDone.setOnClickListener { viewModel.buttonDonePressed() }
 
         getCityList()
     }
