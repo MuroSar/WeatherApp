@@ -18,6 +18,6 @@ class CityMainViewModel: ViewModel(), CityContract.ViewModel {
         }
 
     override fun buttonDonePressed() {
-        TODO("not implemented")
+        //TODO("not implemented")
     }
 }
