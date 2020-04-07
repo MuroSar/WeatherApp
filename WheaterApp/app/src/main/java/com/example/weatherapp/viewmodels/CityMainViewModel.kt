@@ -7,8 +7,10 @@ import com.example.domain.entities.City
 import com.example.weatherapp.contracts.CityContract
 import com.example.weatherapp.utils.Data
 import com.example.weatherapp.utils.Event
+import com.example.weatherapp.utils.Status.INIT
+import com.example.weatherapp.utils.Status.LOADING
 
-class CityMainViewModel: ViewModel(), CityContract.ViewModel {
+class CityMainViewModel : ViewModel(), CityContract.ViewModel {
 
     private val mutableMainState: MutableLiveData<Event<Data<City>>> = MutableLiveData()
 
@@ -18,6 +20,10 @@ class CityMainViewModel: ViewModel(), CityContract.ViewModel {
         }
 
     override fun buttonDonePressed() {
-        //TODO("not implemented")
+        mutableMainState.postValue(Event(Data(status = LOADING)))
+    }
+
+    override fun getListOfCities() {
+        mutableMainState.postValue(Event(Data(status = INIT)))
     }
 }

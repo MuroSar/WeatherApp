@@ -43,4 +43,15 @@
         android:background="@android:color/transparent"
         android:text="@string/activity_city_done_button"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTint="@android:color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDone"
+        app:layout_constraintTop_toBottomOf="@+id/main_edit_text_country" />
 </androidx.constraintlayout.widget.ConstraintLayout>
