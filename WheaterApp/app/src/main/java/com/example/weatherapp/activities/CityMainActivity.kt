@@ -30,7 +30,7 @@ class CityMainActivity : AppCompatActivity(), CityContract.View {
     }
 
     private fun updateUI(weatherData: Event<Data<City>>){
-        when(weatherData.peekContent().responseType) {
+        when(weatherData.peekContent().status) {
             //TODO catch every response type
         }
     }
