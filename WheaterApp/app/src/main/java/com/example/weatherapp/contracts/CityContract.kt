@@ -1,13 +1,16 @@
 package com.example.weatherapp.contracts
 
+import org.json.JSONArray
+
 interface CityContract {
     interface ViewModel {
         fun buttonDonePressed()
-        fun getListOfCities()
+        fun initAutoCompleteTextViewState()
+        fun createCityList(jsonArray: JSONArray)
     }
 
     interface View {
         fun nextActivityIntent()
-        fun getCityList()
+        fun readJSONFile()
     }
 }

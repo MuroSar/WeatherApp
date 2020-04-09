@@ -1,9 +1,8 @@
 package com.example.weatherapp.activities
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.domain.entities.City
@@ -11,16 +10,13 @@ import com.example.weatherapp.R
 import com.example.weatherapp.contracts.CityContract
 import com.example.weatherapp.utils.Data
 import com.example.weatherapp.utils.Event
-import com.example.weatherapp.utils.Status.ERROR
-import com.example.weatherapp.utils.Status.INIT
-import com.example.weatherapp.utils.Status.LOADING
-import com.example.weatherapp.utils.Status.SUCCESSFUL
-import com.example.weatherapp.utils.listOfCity
+import com.example.weatherapp.utils.Status.BEFORE
+import com.example.weatherapp.utils.Status.DONE
 import com.example.weatherapp.utils.startActivity
 import com.example.weatherapp.viewmodels.CityMainViewModel
 import kotlinx.android.synthetic.main.activity_city.buttonDone
 import kotlinx.android.synthetic.main.activity_city.main_edit_text_country
-import kotlinx.android.synthetic.main.activity_city.progressBar
+import org.json.JSONArray
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CityMainActivity : AppCompatActivity(), CityContract.View {
@@ -35,50 +31,52 @@ class CityMainActivity : AppCompatActivity(), CityContract.View {
 
         buttonDone.setOnClickListener { viewModel.buttonDonePressed() }
 
-        main_edit_text_country.setOnClickListener { viewModel.getListOfCities() }
+        viewModel.initAutoCompleteTextViewState()
+
     }
 
     private fun updateUI(weatherData: Event<Data<City>>) {
         when (weatherData.peekContent().status) {
-            INIT -> {
-                getCityList()
+            BEFORE -> {
+                readJSONFile()
             }
-            LOADING -> {
-                showLoading()
-            }
-            SUCCESSFUL -> {
-                hideLoading()
+            DONE -> {
                 nextActivityIntent()
-            }
-            ERROR -> {
-                hideLoading()
-                showErrorMessage()
             }
         }
     }
 
     override fun nextActivityIntent() {
-        startActivity<DetailsCityActivity>()
+        startActivity<DetailsCityActivity>(NAME, getCityId())
     }
 
-    override fun getCityList() {
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listOfCity)
+    override fun readJSONFile() {
+        val json = applicationContext.assets.open(FILE_NAME).bufferedReader().use {
+            it.readText()
+        }
+        createCityList(json)
+    }
+
+    private fun createCityList(json: String?) {
+        val jsonArray = JSONArray(json)
+        viewModel.createCityList(jsonArray)
+        setCityListAdapter()
+    }
+
+    private fun setCityListAdapter() {
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listOfNameOfCity)
         main_edit_text_country.setAdapter(adapter)
     }
 
-    private fun showErrorMessage() {
-        Toast.makeText(this, MESSAGE, Toast.LENGTH_SHORT).show()
-    }
-
-    private fun showLoading() {
-        progressBar.visibility = View.VISIBLE
-    }
-
-    private fun hideLoading() {
-        progressBar.visibility = View.GONE
-    }
+    private fun getCityId(): Int = viewModel.getCityId(main_edit_text_country.text.toString())
 
     companion object {
-        const val MESSAGE = "Some error"
+        var listOfCity = mutableListOf<City>()
+        var listOfNameOfCity = mutableListOf<String>()
+        const val ID = "id"
+        const val NAME = "name"
+        const val COUNTRY = "country"
+        private const val FILE_NAME = "city.list.json"
+        const val COUNTRY_AR = "AR"
     }
 }
