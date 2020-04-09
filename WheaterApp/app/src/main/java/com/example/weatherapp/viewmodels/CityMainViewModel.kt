@@ -17,7 +17,7 @@ import com.example.weatherapp.utils.Status.BEFORE
 import com.example.weatherapp.utils.Status.DONE
 import org.json.JSONArray
 
-open class CityMainViewModel : ViewModel(), CityContract.ViewModel {
+class CityMainViewModel : ViewModel(), CityContract.ViewModel {
 
     private val mutableMainState: MutableLiveData<Event<Data<City>>> = MutableLiveData()
 
