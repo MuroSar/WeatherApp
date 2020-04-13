@@ -10,7 +10,7 @@
     
     <style name="BasicSizeAndColor">
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">@dimen/text_size_city_thirty_sp</item>
+        <item name="android:textSize">@dimen/text_size_city</item>
     </style>
 
 </resources>
