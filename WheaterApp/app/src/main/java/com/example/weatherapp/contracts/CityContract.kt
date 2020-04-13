@@ -6,7 +6,7 @@ interface CityContract {
     interface ViewModel {
         fun buttonDonePressed()
         fun initAutoCompleteTextViewState()
-        fun createCityList(jsonArray: JSONArray)
+        fun createCityList(jsonArray: JSONArray): MutableList<String>
     }
 
     interface View {

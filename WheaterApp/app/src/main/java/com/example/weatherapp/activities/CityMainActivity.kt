@@ -1,6 +1,5 @@
 package com.example.weatherapp.activities
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
@@ -10,10 +9,11 @@ import com.example.weatherapp.R
 import com.example.weatherapp.contracts.CityContract
 import com.example.weatherapp.utils.Data
 import com.example.weatherapp.utils.Event
-import com.example.weatherapp.utils.Status.BEFORE
 import com.example.weatherapp.utils.Status.DONE
+import com.example.weatherapp.utils.Status.INIT
 import com.example.weatherapp.utils.startActivity
 import com.example.weatherapp.viewmodels.CityMainViewModel
+import com.example.weatherapp.viewmodels.CityMainViewModel.Companion.NAME
 import kotlinx.android.synthetic.main.activity_city.buttonDone
 import kotlinx.android.synthetic.main.activity_city.main_edit_text_country
 import org.json.JSONArray
@@ -32,12 +32,11 @@ class CityMainActivity : AppCompatActivity(), CityContract.View {
         buttonDone.setOnClickListener { viewModel.buttonDonePressed() }
 
         viewModel.initAutoCompleteTextViewState()
-
     }
 
     private fun updateUI(weatherData: Event<Data<City>>) {
         when (weatherData.peekContent().status) {
-            BEFORE -> {
+            INIT -> {
                 readJSONFile()
             }
             DONE -> {
@@ -59,24 +58,17 @@ class CityMainActivity : AppCompatActivity(), CityContract.View {
 
     private fun createCityList(json: String?) {
         val jsonArray = JSONArray(json)
-        viewModel.createCityList(jsonArray)
-        setCityListAdapter()
+        setCityListAdapter(viewModel.createCityList(jsonArray))
     }
 
-    private fun setCityListAdapter() {
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listOfNameOfCity)
+    private fun setCityListAdapter(cities: MutableList<String>) {
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, cities)
         main_edit_text_country.setAdapter(adapter)
     }
 
     private fun getCityId(): Int = viewModel.getCityId(main_edit_text_country.text.toString())
 
     companion object {
-        var listOfCity = mutableListOf<City>()
-        var listOfNameOfCity = mutableListOf<String>()
-        const val ID = "id"
-        const val NAME = "name"
-        const val COUNTRY = "country"
         private const val FILE_NAME = "city.list.json"
-        const val COUNTRY_AR = "AR"
     }
 }

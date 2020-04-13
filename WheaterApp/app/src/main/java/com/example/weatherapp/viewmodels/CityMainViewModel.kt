@@ -4,20 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.domain.entities.City
-import com.example.weatherapp.activities.CityMainActivity.Companion.COUNTRY
-import com.example.weatherapp.activities.CityMainActivity.Companion.COUNTRY_AR
-import com.example.weatherapp.activities.CityMainActivity.Companion.ID
-import com.example.weatherapp.activities.CityMainActivity.Companion.NAME
-import com.example.weatherapp.activities.CityMainActivity.Companion.listOfCity
-import com.example.weatherapp.activities.CityMainActivity.Companion.listOfNameOfCity
+import com.example.domain.usecases.CreateCityListUseCase
+import com.example.domain.usecases.GetCityByIdUseCase
 import com.example.weatherapp.contracts.CityContract
 import com.example.weatherapp.utils.Data
 import com.example.weatherapp.utils.Event
-import com.example.weatherapp.utils.Status.BEFORE
 import com.example.weatherapp.utils.Status.DONE
+import com.example.weatherapp.utils.Status.INIT
 import org.json.JSONArray
 
-class CityMainViewModel : ViewModel(), CityContract.ViewModel {
+class CityMainViewModel(
+        private val getCityByIdUseCase: GetCityByIdUseCase,
+        private val createCityListIdUseCase: CreateCityListUseCase
+) : ViewModel(), CityContract.ViewModel {
 
     private val mutableMainState: MutableLiveData<Event<Data<City>>> = MutableLiveData()
 
@@ -31,35 +30,22 @@ class CityMainViewModel : ViewModel(), CityContract.ViewModel {
     }
 
     override fun initAutoCompleteTextViewState() {
-        mutableMainState.postValue(Event(Data(status = BEFORE)))
+        mutableMainState.postValue(Event(Data(status = INIT)))
     }
 
-    override fun createCityList(jsonArray: JSONArray) {
-        for (i in 0 until jsonArray.length()) {
-            val jsonObject = jsonArray.getJSONObject(i)
-
-            if (jsonObject.get(COUNTRY).equals(COUNTRY_AR)) {
-                val city = City(
-                        jsonObject.get(ID).toString().toInt(),
-                        jsonObject.get(NAME).toString(),
-                        jsonObject.get(COUNTRY).toString()
-                )
-                listOfCity.add(city)
-                listOfNameOfCity.add(city.name)
-            }
+    override fun createCityList(jsonArray: JSONArray): MutableList<String> {
+        val stringList = mutableListOf<String>()
+        createCityListIdUseCase.invoke(listOfCity, jsonArray)
+        for (i in 0 until listOfCity.size) {
+            stringList.add(listOfCity[i].name)
         }
+        return stringList
     }
 
-    fun getCityId(name: String): Int {
-        for (i in ZERO until listOfCity.size) {
-            if (listOfCity[i].name.equals(name)) {
-                return listOfCity[i].id
-            }
-        }
-        return ZERO
-    }
+    fun getCityId(name: String): Int = getCityByIdUseCase.invoke(listOfCity, name)
 
     companion object {
-        private const val ZERO = 0
+        private var listOfCity = mutableListOf<City>()
+        const val NAME = "name"
     }
 }
