@@ -7,6 +7,7 @@ interface CityContract {
         fun buttonDonePressed()
         fun initAutoCompleteTextViewState()
         fun createCityList(jsonArray: JSONArray): MutableList<String>
+        fun getCityId(name: String): Int
     }
 
     interface View {

@@ -1,4 +1,4 @@
-package com.example.data.repositories
+package com.example.domain.usecases.implementation
 
 import com.example.domain.utils.ZERO
 import com.example.domain.entities.City

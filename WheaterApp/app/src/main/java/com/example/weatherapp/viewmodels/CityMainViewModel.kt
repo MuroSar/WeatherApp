@@ -33,16 +33,9 @@ class CityMainViewModel(
         mutableMainState.postValue(Event(Data(status = INIT)))
     }
 
-    override fun createCityList(jsonArray: JSONArray): MutableList<String> {
-        val stringList = mutableListOf<String>()
-        createCityListIdUseCase.invoke(listOfCity, jsonArray)
-        for (i in 0 until listOfCity.size) {
-            stringList.add(listOfCity[i].name)
-        }
-        return stringList
-    }
+    override fun createCityList(jsonArray: JSONArray) = createCityListIdUseCase(listOfCity, jsonArray)
 
-    fun getCityId(name: String): Int = getCityByIdUseCase.invoke(listOfCity, name)
+    override fun getCityId(name: String): Int = getCityByIdUseCase(listOfCity, name)
 
     companion object {
         private var listOfCity = mutableListOf<City>()
