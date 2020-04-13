@@ -9,11 +9,14 @@ import com.example.weatherapp.R
 import com.example.weatherapp.contracts.CityContract
 import com.example.weatherapp.utils.Data
 import com.example.weatherapp.utils.Event
-import com.example.weatherapp.utils.listOfCity
+import com.example.weatherapp.utils.Status.DONE
+import com.example.weatherapp.utils.Status.INIT
 import com.example.weatherapp.utils.startActivity
 import com.example.weatherapp.viewmodels.CityMainViewModel
+import com.example.weatherapp.viewmodels.CityMainViewModel.Companion.NAME
 import kotlinx.android.synthetic.main.activity_city.buttonDone
 import kotlinx.android.synthetic.main.activity_city.main_edit_text_country
+import org.json.JSONArray
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CityMainActivity : AppCompatActivity(), CityContract.View {
@@ -27,22 +30,45 @@ class CityMainActivity : AppCompatActivity(), CityContract.View {
         viewModel.mainState.observe(this, Observer { updateUI(it) })
 
         buttonDone.setOnClickListener { viewModel.buttonDonePressed() }
+
+        viewModel.initAutoCompleteTextViewState()
     }
 
-    private fun updateUI(weatherData: Event<Data<City>>){
-        when(weatherData.peekContent().status) {
-            //TODO catch every response type
+    private fun updateUI(weatherData: Event<Data<City>>) {
+        when (weatherData.peekContent().status) {
+            INIT -> {
+                readJSONFile()
+            }
+            DONE -> {
+                nextActivityIntent()
+            }
         }
     }
 
-    //It's gonna be used in the next PR.
     override fun nextActivityIntent() {
-        startActivity<DetailsCityActivity>()
+        startActivity<DetailsCityActivity>(NAME, getCityId())
     }
 
-    //It's gonna be used in the next PR.
-    override fun getCityList() {
-        val adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listOfCity)
+    override fun readJSONFile() {
+        val json = applicationContext.assets.open(FILE_NAME).bufferedReader().use {
+            it.readText()
+        }
+        createCityList(json)
+    }
+
+    private fun createCityList(json: String?) {
+        val jsonArray = JSONArray(json)
+        setCityListAdapter(viewModel.createCityList(jsonArray))
+    }
+
+    private fun setCityListAdapter(cities: MutableList<String>) {
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, cities)
         main_edit_text_country.setAdapter(adapter)
+    }
+
+    private fun getCityId(): Int = viewModel.getCityId(main_edit_text_country.text.toString())
+
+    companion object {
+        private const val FILE_NAME = "city.list.json"
     }
 }
