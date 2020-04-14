@@ -37,7 +37,7 @@ class SplashScreenViewModel(
             val jsonArrayString = JSONArray(JSON)
             JSONData.setJSON(createCityListUseCase(listOfCity, jsonArrayString))
             if (JSONData.isNotEmpty()) {
-                mutableMainState.postValue(Event(Data(status = CHARGED_JSON, listOfCities = JSONData.getJSON())))
+                mutableMainState.postValue(Event(Data(status = CHARGED_JSON)))
             }
         }
     }
