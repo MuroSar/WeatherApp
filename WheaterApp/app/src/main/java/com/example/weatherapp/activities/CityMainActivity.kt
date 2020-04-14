@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.domain.entities.City
 import com.example.weatherapp.R
-import com.example.weatherapp.contracts.CityContract
 import com.example.weatherapp.utils.Data
 import com.example.weatherapp.utils.Event
 import com.example.weatherapp.utils.Status.DONE
