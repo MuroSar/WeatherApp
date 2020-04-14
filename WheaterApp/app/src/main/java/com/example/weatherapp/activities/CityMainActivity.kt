@@ -9,12 +9,12 @@ import com.example.domain.entities.City
 import com.example.weatherapp.R
 import com.example.weatherapp.utils.Data
 import com.example.weatherapp.utils.Event
+import com.example.weatherapp.utils.JSONData
 import com.example.weatherapp.utils.Status.DONE
 import com.example.weatherapp.utils.Status.INIT
 import com.example.weatherapp.utils.startActivity
 import com.example.weatherapp.viewmodels.CityMainViewModel
 import com.example.weatherapp.viewmodels.CityMainViewModel.Companion.NAME
-import com.example.weatherapp.viewmodels.CityMainViewModel.Companion.listOfCities
 import kotlinx.android.synthetic.main.activity_city.buttonDone
 import kotlinx.android.synthetic.main.activity_city.main_edit_text_country
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -49,7 +49,7 @@ class CityMainActivity : AppCompatActivity() {
     }
 
     private fun setCityListAdapter() {
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listOfCities)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, JSONData.getJSON())
         main_edit_text_country.setAdapter(adapter)
     }
 

@@ -9,9 +9,9 @@ import com.example.domain.usecases.CreateCityListUseCase
 import com.example.weatherapp.contracts.SplashScreenContract
 import com.example.weatherapp.utils.Data
 import com.example.weatherapp.utils.Event
+import com.example.weatherapp.utils.JSONData
 import com.example.weatherapp.utils.Status.CHARGED_JSON
 import com.example.weatherapp.utils.Status.INIT
-import com.example.weatherapp.viewmodels.CityMainViewModel.Companion.listOfCities
 import com.example.weatherapp.viewmodels.CityMainViewModel.Companion.listOfCity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,9 +35,9 @@ class SplashScreenViewModel(
     override fun createCityList(JSON: String) = viewModelScope.launch {
         withContext(Dispatchers.IO) {
             val jsonArrayString = JSONArray(JSON)
-            listOfCities = createCityListUseCase(listOfCity, jsonArrayString)
-            if (listOfCities.isNotEmpty()) {
-                mutableMainState.postValue(Event(Data(status = CHARGED_JSON)))
+            JSONData.setJSON(createCityListUseCase(listOfCity, jsonArrayString))
+            if (JSONData.isNotEmpty()) {
+                mutableMainState.postValue(Event(Data(status = CHARGED_JSON, listOfCities = JSONData.getJSON())))
             }
         }
     }

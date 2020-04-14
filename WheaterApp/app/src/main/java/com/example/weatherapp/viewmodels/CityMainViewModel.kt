@@ -32,7 +32,6 @@ class CityMainViewModel(private val getCityByIdUseCase: GetCityByIdUseCase) : Vi
 
     companion object {
         var listOfCity = mutableListOf<City>()
-        var listOfCities = mutableListOf<String>()
         const val NAME = "name"
     }
 }
