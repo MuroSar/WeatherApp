@@ -3,4 +3,7 @@
     <string name="activity_city_enter_valid_text">Enter a valid city</string>
     <string name="activity_city_done_button">Done</string>
     <string name="activity_city_hint_text">Insert the name here</string>
+    <string name="splash_activity_powered_by">Powered By</string>
+    <string name="splash_activity_dream_team">DREAM TEAM DE LAS SIERRAS</string>
+    <string name="image">splash_activity_content_image</string>
 </resources>

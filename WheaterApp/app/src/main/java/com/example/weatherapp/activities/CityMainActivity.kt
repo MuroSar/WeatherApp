@@ -2,6 +2,7 @@ package com.example.weatherapp.activities
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.domain.entities.City
@@ -14,9 +15,9 @@ import com.example.weatherapp.utils.Status.INIT
 import com.example.weatherapp.utils.startActivity
 import com.example.weatherapp.viewmodels.CityMainViewModel
 import com.example.weatherapp.viewmodels.CityMainViewModel.Companion.NAME
+import com.example.weatherapp.viewmodels.CityMainViewModel.Companion.listOfCities
 import kotlinx.android.synthetic.main.activity_city.buttonDone
 import kotlinx.android.synthetic.main.activity_city.main_edit_text_country
-import org.json.JSONArray
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CityMainActivity : AppCompatActivity(), CityContract.View {
@@ -37,10 +38,13 @@ class CityMainActivity : AppCompatActivity(), CityContract.View {
     private fun updateUI(weatherData: Event<Data<City>>) {
         when (weatherData.peekContent().status) {
             INIT -> {
-                readJSONFile()
+                setCityListAdapter()
             }
             DONE -> {
                 nextActivityIntent()
+            }
+            else -> {
+                showToastMessage()
             }
         }
     }
@@ -49,26 +53,18 @@ class CityMainActivity : AppCompatActivity(), CityContract.View {
         startActivity<DetailsCityActivity>(NAME, getCityId())
     }
 
-    override fun readJSONFile() {
-        val json = applicationContext.assets.open(FILE_NAME).bufferedReader().use {
-            it.readText()
-        }
-        createCityList(json)
-    }
-
-    private fun createCityList(json: String?) {
-        val jsonArray = JSONArray(json)
-        setCityListAdapter(viewModel.createCityList(jsonArray))
-    }
-
-    private fun setCityListAdapter(cities: MutableList<String>) {
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, cities)
+    private fun setCityListAdapter() {
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listOfCities)
         main_edit_text_country.setAdapter(adapter)
     }
 
     private fun getCityId(): Int = viewModel.getCityId(main_edit_text_country.text.toString())
 
+    private fun showToastMessage() {
+        Toast.makeText(this, MESSAGE_ERROR, Toast.LENGTH_SHORT).show()
+    }
+
     companion object {
-        private const val FILE_NAME = "city.list.json"
+        private const val MESSAGE_ERROR = "ERROR"
     }
 }

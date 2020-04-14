@@ -4,5 +4,5 @@ import com.example.domain.entities.City
 
 interface GetCityByIdUseCase {
 
-    operator fun invoke(listOfCity:MutableList<City>, id: String): Int
+    operator fun invoke(listOfCity:MutableList<City>, name: String): Int
 }

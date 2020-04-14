@@ -4,19 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.domain.entities.City
-import com.example.domain.usecases.CreateCityListUseCase
 import com.example.domain.usecases.GetCityByIdUseCase
 import com.example.weatherapp.contracts.CityContract
 import com.example.weatherapp.utils.Data
 import com.example.weatherapp.utils.Event
 import com.example.weatherapp.utils.Status.DONE
 import com.example.weatherapp.utils.Status.INIT
-import org.json.JSONArray
 
-class CityMainViewModel(
-        private val getCityByIdUseCase: GetCityByIdUseCase,
-        private val createCityListIdUseCase: CreateCityListUseCase
-) : ViewModel(), CityContract.ViewModel {
+class CityMainViewModel(private val getCityByIdUseCase: GetCityByIdUseCase) : ViewModel(), CityContract.ViewModel {
 
     private val mutableMainState: MutableLiveData<Event<Data<City>>> = MutableLiveData()
 
@@ -26,19 +21,18 @@ class CityMainViewModel(
         }
 
     override fun buttonDonePressed() {
-        mutableMainState.postValue(Event(Data(status = DONE)))
+        mutableMainState.value = Event(Data(status = DONE))
     }
 
     override fun initAutoCompleteTextViewState() {
-        mutableMainState.postValue(Event(Data(status = INIT)))
+        mutableMainState.value = Event(Data(status = INIT))
     }
-
-    override fun createCityList(jsonArray: JSONArray) = createCityListIdUseCase(listOfCity, jsonArray)
 
     override fun getCityId(name: String): Int = getCityByIdUseCase(listOfCity, name)
 
     companion object {
-        private var listOfCity = mutableListOf<City>()
+        var listOfCity = mutableListOf<City>()
+        var listOfCities = mutableListOf<String>()
         const val NAME = "name"
     }
 }
