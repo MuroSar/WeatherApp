@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_city.buttonDone
 import kotlinx.android.synthetic.main.activity_city.main_edit_text_country
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CityMainActivity : AppCompatActivity(), CityContract.View {
+class CityMainActivity : AppCompatActivity() {
 
     private val viewModel by viewModel<CityMainViewModel>()
 
@@ -41,16 +41,12 @@ class CityMainActivity : AppCompatActivity(), CityContract.View {
                 setCityListAdapter()
             }
             DONE -> {
-                nextActivityIntent()
+                startActivity<DetailsCityActivity>(NAME, getCityId())
             }
             else -> {
-                showToastMessage()
+                Toast.makeText(this, MESSAGE_ERROR, Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-    override fun nextActivityIntent() {
-        startActivity<DetailsCityActivity>(NAME, getCityId())
     }
 
     private fun setCityListAdapter() {
@@ -59,10 +55,6 @@ class CityMainActivity : AppCompatActivity(), CityContract.View {
     }
 
     private fun getCityId(): Int = viewModel.getCityId(main_edit_text_country.text.toString())
-
-    private fun showToastMessage() {
-        Toast.makeText(this, MESSAGE_ERROR, Toast.LENGTH_SHORT).show()
-    }
 
     companion object {
         private const val MESSAGE_ERROR = "ERROR"

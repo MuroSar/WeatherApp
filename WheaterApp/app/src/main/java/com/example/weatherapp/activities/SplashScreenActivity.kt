@@ -15,7 +15,7 @@ import com.example.weatherapp.utils.startActivity
 import com.example.weatherapp.viewmodels.SplashScreenViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SplashScreenActivity : AppCompatActivity(), SplashScreenContract.View {
+class SplashScreenActivity : AppCompatActivity() {
 
     private val viewModel by viewModel<SplashScreenViewModel>()
 
@@ -25,7 +25,7 @@ class SplashScreenActivity : AppCompatActivity(), SplashScreenContract.View {
 
         viewModel.mainState.observe(this, Observer { updateUI(it) })
 
-        viewModel.initAutoCompleteTextViewState()
+        viewModel.initJSON()
     }
 
     private fun updateUI(splashData: Event<Data<City>>) {
@@ -34,10 +34,10 @@ class SplashScreenActivity : AppCompatActivity(), SplashScreenContract.View {
                 readJSONFile()
             }
             CHARGED_JSON -> {
-                nextActivity()
+                startActivity<CityMainActivity>(null, null)
             }
             else -> {
-                showMessageError()
+                Toast.makeText(this, MESSAGE, Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -46,19 +46,7 @@ class SplashScreenActivity : AppCompatActivity(), SplashScreenContract.View {
         val json = applicationContext.assets.open(FILE_NAME).bufferedReader().use {
             it.readText()
         }
-        createCityList(json)
-    }
-
-    override fun nextActivity() {
-        startActivity<CityMainActivity>(null, null)
-    }
-
-    private fun createCityList(json: String) {
         viewModel.createCityList(json)
-    }
-
-    private fun showMessageError() {
-        Toast.makeText(this, MESSAGE, Toast.LENGTH_SHORT).show()
     }
 
     companion object {

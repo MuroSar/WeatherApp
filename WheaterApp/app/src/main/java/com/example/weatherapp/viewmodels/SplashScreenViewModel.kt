@@ -21,19 +21,19 @@ import org.json.JSONArray
 class SplashScreenViewModel(
         private val createCityListUseCase: CreateCityListUseCase
 ) : ViewModel(), SplashScreenContract.ViewModel {
-    override val mutableMainState: MutableLiveData<Event<Data<City>>> = MutableLiveData()
+    private val mutableMainState: MutableLiveData<Event<Data<City>>> = MutableLiveData()
 
     override val mainState: LiveData<Event<Data<City>>>
         get() {
             return mutableMainState
         }
 
-    override fun initAutoCompleteTextViewState() {
+    override fun initJSON() {
         mutableMainState.value = Event(Data(status = INIT))
     }
 
     override fun createCityList(JSON: String) = viewModelScope.launch {
-        withContext(Dispatchers.Default) {
+        withContext(Dispatchers.IO) {
             val jsonArrayString = JSONArray(JSON)
             listOfCities = createCityListUseCase(listOfCity, jsonArrayString)
             if (listOfCities.isNotEmpty()) {

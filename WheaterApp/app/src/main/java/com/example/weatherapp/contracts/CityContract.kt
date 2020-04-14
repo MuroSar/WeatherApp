@@ -6,8 +6,4 @@ interface CityContract {
         fun initAutoCompleteTextViewState()
         fun getCityId(name: String): Int
     }
-
-    interface View {
-        fun nextActivityIntent()
-    }
 }
