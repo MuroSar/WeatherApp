@@ -4,12 +4,18 @@ ext {
     corektx = "1.2.0"
     constraintlayout = "1.1.3"
     json = "20180813"
+    coroutinesAndroidVersion = "1.1.1"
+    coroutinesCoreVersion = "1.1.1"
+    androidx_viewmodel = "2.2.0"
 
-generalDependencies = [
-        viewmodel : "org.koin:koin-androidx-viewmodel:${viewmodel}",
-        appcompat : "androidx.appcompat:appcompat:${appcompat}",
-        coreKtx : "androidx.core:core-ktx:${corektx}",
-        constraintlayout : "androidx.constraintlayout:constraintlayout:${constraintlayout}",
-        json: "org.json:json:${json}"
+    generalDependencies = [
+            coroutinesAndroid : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesAndroidVersion",
+            androidx_viewmodel: "androidx.lifecycle:lifecycle-viewmodel-ktx:${androidx_viewmodel}",
+            coroutinesCore    : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesCoreVersion",
+            viewmodel         : "org.koin:koin-androidx-viewmodel:${viewmodel}",
+            appcompat         : "androidx.appcompat:appcompat:${appcompat}",
+            coreKtx           : "androidx.core:core-ktx:${corektx}",
+            constraintlayout  : "androidx.constraintlayout:constraintlayout:${constraintlayout}",
+            json              : "org.json:json:${json}"
     ]
 }
