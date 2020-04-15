@@ -11,7 +11,9 @@ import com.example.weatherapp.utils.Event
 import com.example.weatherapp.utils.Status.DONE
 import com.example.weatherapp.utils.Status.INIT
 
-class CityMainViewModel(private val getCityByIdUseCase: GetCityByIdUseCase) : ViewModel(), CityContract.ViewModel {
+class CityMainViewModel(
+        private val getCityByIdUseCase: GetCityByIdUseCase
+) : ViewModel(), CityContract.ViewModel {
 
     private val mutableMainState: MutableLiveData<Event<Data<City>>> = MutableLiveData()
 

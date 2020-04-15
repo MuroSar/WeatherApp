@@ -7,5 +7,5 @@ import org.koin.dsl.module
 
 val viewModelsModule = module {
     viewModel { CityMainViewModel(get()) }
-    viewModel { SplashScreenViewModel(get()) }
+    viewModel { SplashScreenViewModel(get(),get(),get()) }
 }

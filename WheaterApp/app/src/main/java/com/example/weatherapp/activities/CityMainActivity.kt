@@ -6,10 +6,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.domain.entities.City
+import com.example.domain.usecases.GetJSONData
 import com.example.weatherapp.R
 import com.example.weatherapp.utils.Data
 import com.example.weatherapp.utils.Event
-import com.example.weatherapp.utils.JSONData
 import com.example.weatherapp.utils.Status.DONE
 import com.example.weatherapp.utils.Status.INIT
 import com.example.weatherapp.utils.startActivity
@@ -17,11 +17,13 @@ import com.example.weatherapp.viewmodels.CityMainViewModel
 import com.example.weatherapp.viewmodels.CityMainViewModel.Companion.NAME
 import kotlinx.android.synthetic.main.activity_city.buttonDone
 import kotlinx.android.synthetic.main.activity_city.main_edit_text_country
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CityMainActivity : AppCompatActivity() {
 
     private val viewModel by viewModel<CityMainViewModel>()
+    private val getJSONData: GetJSONData by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +51,7 @@ class CityMainActivity : AppCompatActivity() {
     }
 
     private fun setCityListAdapter() {
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, JSONData.getJSON())
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, getJSONData.invoke())
         main_edit_text_country.setAdapter(adapter)
     }
 

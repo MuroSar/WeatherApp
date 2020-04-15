@@ -1,8 +1,8 @@
-package com.example.weatherapp.utils
+package com.example.data.utils
 
 object JSONData {
 
-    var listOfCitiesString = mutableListOf<String>()
+    private var listOfCitiesString = mutableListOf<String>()
 
     fun getJSON() = listOfCitiesString
 
