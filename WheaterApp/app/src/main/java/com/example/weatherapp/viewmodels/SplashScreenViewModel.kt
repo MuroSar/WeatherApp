@@ -6,8 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.entities.City
 import com.example.domain.usecases.CreateCityListUseCase
-import com.example.domain.usecases.IsNotEmptyJSON
-import com.example.domain.usecases.SetJSONData
+import com.example.domain.usecases.JSONDataUseCase
 import com.example.weatherapp.contracts.SplashScreenContract
 import com.example.weatherapp.utils.Data
 import com.example.weatherapp.utils.Event
@@ -21,12 +20,11 @@ import org.json.JSONArray
 
 class SplashScreenViewModel(
         private val createCityListUseCase: CreateCityListUseCase,
-        private val setJSONData: SetJSONData,
-        private val isNotEmptyJSON: IsNotEmptyJSON
+        private val JSONDataUseCase: JSONDataUseCase
 ) : ViewModel(), SplashScreenContract.ViewModel {
     private val mutableMainState: MutableLiveData<Event<Data<City>>> = MutableLiveData()
 
-    override val mainState: LiveData<Event<Data<City>>>
+    val mainState: LiveData<Event<Data<City>>>
         get() {
             return mutableMainState
         }
@@ -38,8 +36,8 @@ class SplashScreenViewModel(
     override fun createCityList(JSON: String) = viewModelScope.launch {
         withContext(Dispatchers.IO) {
             val jsonArrayString = JSONArray(JSON)
-            setJSONData(createCityListUseCase(listOfCity, jsonArrayString))
-            if (isNotEmptyJSON.invoke()) {
+            JSONDataUseCase.setJSONData(createCityListUseCase(listOfCity, jsonArrayString))
+            if (JSONDataUseCase.isNotEmptyData()) {
                 mutableMainState.postValue(Event(Data(status = CHARGED_JSON)))
             }
         }

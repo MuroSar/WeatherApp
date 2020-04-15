@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.domain.entities.City
-import com.example.domain.usecases.GetJSONData
+import com.example.domain.usecases.JSONDataUseCase
 import com.example.weatherapp.R
 import com.example.weatherapp.utils.Data
 import com.example.weatherapp.utils.Event
@@ -23,7 +23,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class CityMainActivity : AppCompatActivity() {
 
     private val viewModel by viewModel<CityMainViewModel>()
-    private val getJSONData: GetJSONData by inject()
+    private val JSONDataUseCase: JSONDataUseCase by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +51,7 @@ class CityMainActivity : AppCompatActivity() {
     }
 
     private fun setCityListAdapter() {
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, getJSONData.invoke())
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, JSONDataUseCase.getJSONData())
         main_edit_text_country.setAdapter(adapter)
     }
 
