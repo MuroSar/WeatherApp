@@ -6,6 +6,6 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelsModule = module {
-    viewModel { CityMainViewModel(get()) }
-    viewModel { SplashScreenViewModel(get(),get()) }
+    viewModel { CityMainViewModel(get(), get()) }
+    viewModel { SplashScreenViewModel(get(), get()) }
 }

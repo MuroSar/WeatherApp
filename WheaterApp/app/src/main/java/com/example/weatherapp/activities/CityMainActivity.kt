@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.domain.entities.City
-import com.example.domain.usecases.JSONDataUseCase
 import com.example.weatherapp.R
 import com.example.weatherapp.utils.Data
 import com.example.weatherapp.utils.Event
@@ -17,13 +16,11 @@ import com.example.weatherapp.viewmodels.CityMainViewModel
 import com.example.weatherapp.viewmodels.CityMainViewModel.Companion.NAME
 import kotlinx.android.synthetic.main.activity_city.buttonDone
 import kotlinx.android.synthetic.main.activity_city.main_edit_text_country
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CityMainActivity : AppCompatActivity() {
 
     private val viewModel by viewModel<CityMainViewModel>()
-    private val JSONDataUseCase: JSONDataUseCase by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +36,7 @@ class CityMainActivity : AppCompatActivity() {
     private fun updateUI(weatherData: Event<Data<City>>) {
         when (weatherData.peekContent().status) {
             INIT -> {
-                setCityListAdapter()
+                setCityListAdapter(weatherData.peekContent().listOfCities)
             }
             DONE -> {
                 startActivity<DetailsCityActivity>(NAME, getCityId())
@@ -50,9 +47,8 @@ class CityMainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setCityListAdapter() {
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, JSONDataUseCase.getJSONData())
-        main_edit_text_country.setAdapter(adapter)
+    private fun setCityListAdapter(listOfCities: List<String>) {
+        main_edit_text_country.setAdapter(ArrayAdapter(this, android.R.layout.simple_list_item_1, listOfCities))
     }
 
     private fun getCityId(): Int = viewModel.getCityId(main_edit_text_country.text.toString())
