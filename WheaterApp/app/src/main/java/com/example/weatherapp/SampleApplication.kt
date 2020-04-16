@@ -5,7 +5,7 @@ import com.example.di.useCasesModule
 import com.example.weatherapp.di.viewModelsModule
 import org.koin.core.context.startKoin
 
-class SampleApplication: Application() {
+class SampleApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
