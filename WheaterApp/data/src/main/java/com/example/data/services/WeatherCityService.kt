@@ -8,7 +8,7 @@ class WeatherCityService {
 
     private val api: WeatherRequestGenerator = WeatherRequestGenerator()
 
-    fun getWeatherOfACityById(id: Int): Boolean {
+    fun getCityById(id: Int): Boolean {
         val queryHashMap = LinkedHashMap<String, String>()
         queryHashMap.put(ID, id.toString())
         queryHashMap.put(APPID, API_KEY)
