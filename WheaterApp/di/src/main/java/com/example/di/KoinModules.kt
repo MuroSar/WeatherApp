@@ -1,11 +1,11 @@
 package com.example.di
 
 import com.example.data.repositories.CityJSONRepositoryImpl
-import com.example.data.repositories.WeatherCityByIdServiceImpl
+import com.example.data.repositories.WeatherCityByIdRepositoryImpl
 import com.example.data.services.WeatherCityService
 import com.example.domain.usecases.implementation.JSONDataUseCaseImpl
 import com.example.domain.repositories.CityJSONRepository
-import com.example.domain.services.WeatherCityByIdService
+import com.example.domain.repositories.WeatherCityByIdRepository
 import com.example.domain.usecases.CreateCityListUseCase
 import com.example.domain.usecases.GetCityByIdUseCase
 import com.example.domain.usecases.GetCityByNameUseCase
@@ -24,6 +24,6 @@ val useCasesModule = module {
 
 val repositoriesModule = module {
     single { WeatherCityService() }
-    factory<WeatherCityByIdService> { WeatherCityByIdServiceImpl(get()) }
+    factory<WeatherCityByIdRepository> { WeatherCityByIdRepositoryImpl(get()) }
     factory<CityJSONRepository> { CityJSONRepositoryImpl() }
 }
