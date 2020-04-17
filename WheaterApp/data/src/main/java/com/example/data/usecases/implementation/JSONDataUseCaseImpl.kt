@@ -1,9 +1,9 @@
-package com.example.data.repositories
+package com.example.data.usecases.implementation
 
 import com.example.data.utils.JSONData
-import com.example.domain.repositories.CityJSONRepository
+import com.example.domain.usecases.JSONDataUseCase
 
-class CityJSONRepositoryImpl : CityJSONRepository {
+class JSONDataUseCaseImpl: JSONDataUseCase {
 
     override fun getJSONData() = JSONData.getJSON()
 
