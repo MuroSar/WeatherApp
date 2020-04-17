@@ -10,7 +10,13 @@
     
     <style name="BasicSizeAndColor">
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">@dimen/text_size_city_thirty_sp</item>
+        <item name="android:textSize">@dimen/text_size_city</item>
+    </style>
+
+    <style name="SplashScreenBottomText">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/text_size_bottom_splash_activity</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

@@ -1,6 +1,7 @@
 package com.example.weatherapp
 
 import android.app.Application
+import com.example.di.useCasesModule
 import com.example.weatherapp.di.viewModelsModule
 import org.koin.core.context.startKoin
 
@@ -10,7 +11,7 @@ class SampleApplication: Application() {
         super.onCreate()
 
         startKoin {
-            modules(listOf(viewModelsModule))
+            modules(listOf(viewModelsModule, useCasesModule))
         }
     }
 }
