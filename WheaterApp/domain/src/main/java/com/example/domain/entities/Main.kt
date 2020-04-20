@@ -1,8 +1,8 @@
-package com.example.data.services.response
+package com.example.domain.entities
 
-import com.example.data.utils.DEFAULT_TEMP
+import com.example.domain.utils.DEFAULT_TEMP
 
-data class MainResponse(
+data class Main(
         val temp: Double = DEFAULT_TEMP,
         val temp_min: Double = DEFAULT_TEMP,
         val temp_max: Double = DEFAULT_TEMP
