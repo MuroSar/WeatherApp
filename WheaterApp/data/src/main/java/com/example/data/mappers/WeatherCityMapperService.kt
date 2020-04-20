@@ -12,8 +12,9 @@ class WeatherCityMapperService : BaseMapperRepository<CityResponse, City> {
     override fun transform(type: CityResponse): City {
         type.apply {
             return City(
-                    id = id,
-                    name = name,
+                    id,
+                    name,
+                    COUNTRY_AR,
                     temp = transformMain(main),
                     weather = transformWeather(weather)
             )
@@ -47,5 +48,6 @@ class WeatherCityMapperService : BaseMapperRepository<CityResponse, City> {
 
     companion object {
         private const val ZERO = 0
+        private const val COUNTRY_AR = "AR"
     }
 }
