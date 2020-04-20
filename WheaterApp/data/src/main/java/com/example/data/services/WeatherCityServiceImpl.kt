@@ -18,18 +18,16 @@ class WeatherCityServiceImpl : WeatherCityService {
         queryHashMap.put(APPID, WeatherRequestGenerator.API_KEY)
         val callResponse = api.createService(WeatherApi::class.java).getCityById(queryHashMap)
         val response = callResponse.execute()
-        if (response != null) {
-            if(response.isSuccessful) {
-                response.body()?.let { mapper.transform(it) }?.let { return Result.Success(it)  }
+        response.let {
+            if (it.isSuccessful) {
+                it.body()?.let { mapper.transform(it) }?.let { return Result.Success(it) }
             }
             return Result.Failure(Exception(response.message()))
         }
-        return Result.Failure(Exception(ERROR_STRING))
     }
 
     companion object {
         private const val ID = "id"
         private const val APPID = "APPID"
-        private const val ERROR_STRING = "bad request"
     }
 }
