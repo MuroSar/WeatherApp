@@ -18,9 +18,9 @@ class WeatherCityServiceImpl : WeatherCityService {
         queryHashMap.put(APPID, WeatherRequestGenerator.API_KEY)
         val callResponse = api.createService(WeatherApi::class.java).getCityById(queryHashMap)
         val response = callResponse.execute()
-        response.let {
-            if (it.isSuccessful) {
-                it.body()?.let { mapper.transform(it) }?.let { return Result.Success(it) }
+        response.let { responseIt ->
+            if (responseIt.isSuccessful) {
+                responseIt.body()?.let { mapper.transform(it) }?.let { return Result.Success(it) }
             }
             return Result.Failure(Exception(response.message()))
         }
