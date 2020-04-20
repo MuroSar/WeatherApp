@@ -24,7 +24,7 @@ class WeatherCityMapperService : BaseMapperRepository<CityResponse, City> {
     private fun transformMain(type: MainResponse): Main {
         type.apply {
             return Main(
-                    temp- DEGREE_KELVIN,
+                    temp-DEGREE_KELVIN,
                     temp_min-DEGREE_KELVIN,
                     temp_max-DEGREE_KELVIN
             )
