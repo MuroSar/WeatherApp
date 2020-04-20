@@ -24,9 +24,9 @@ class WeatherCityMapperService : BaseMapperRepository<CityResponse, City> {
     private fun transformMain(type: MainResponse): Main {
         type.apply {
             return Main(
-                    temp,
-                    temp_min,
-                    temp_max
+                    temp- DEGREE_KELVIN,
+                    temp_min-DEGREE_KELVIN,
+                    temp_max-DEGREE_KELVIN
             )
         }
     }
@@ -49,5 +49,6 @@ class WeatherCityMapperService : BaseMapperRepository<CityResponse, City> {
     companion object {
         private const val ZERO = 0
         private const val COUNTRY_AR = "AR"
+        private const val DEGREE_KELVIN = 273
     }
 }
