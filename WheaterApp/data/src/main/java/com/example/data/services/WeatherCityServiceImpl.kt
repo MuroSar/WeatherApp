@@ -20,7 +20,7 @@ class WeatherCityServiceImpl : WeatherCityService {
         val response = callResponse.execute()
         response.let { responseIt ->
             if (responseIt.isSuccessful) {
-                responseIt.body()?.let { mapper.transform(it) }?.let { return Result.Success(it) }
+                responseIt.body()?.let { bodyIt -> mapper.transform(bodyIt) }?.let { return Result.Success(it) }
             }
             return Result.Failure(Exception(response.message()))
         }

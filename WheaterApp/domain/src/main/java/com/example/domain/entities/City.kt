@@ -7,6 +7,6 @@ data class City(
         val id: Int = DEFAULT_ID,
         val name: String = NOT_FOUND,
         val country: String = NOT_FOUND,
-        val weather: ArrayList<Weather> = arrayListOf(),
+        val weather: List<Weather> = listOf(),
         val temp: Main? = Main()
 )

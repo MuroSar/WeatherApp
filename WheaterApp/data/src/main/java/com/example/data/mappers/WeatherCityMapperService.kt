@@ -31,7 +31,7 @@ class WeatherCityMapperService : BaseMapperRepository<CityResponse, City> {
         }
     }
 
-    private fun transformWeather(type: ArrayList<WeatherResponse>): ArrayList<Weather> {
+    private fun transformWeather(type: List<WeatherResponse>): List<Weather> {
         lateinit var weather: Weather
         type[ZERO].apply {
             weather = Weather(
@@ -41,9 +41,7 @@ class WeatherCityMapperService : BaseMapperRepository<CityResponse, City> {
                     icon
             )
         }
-        val list = arrayListOf<Weather>()
-        list.add(weather)
-        return list
+        return listOf(weather)
     }
 
     companion object {
