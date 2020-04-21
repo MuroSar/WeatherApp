@@ -11,20 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/details_city_activity_name_of_city"
+        app:layout_constraintBottom_toBottomOf="@+id/text_view_details_activity_name_country"
         app:layout_constraintEnd_toStartOf="@+id/text_view_details_activity_name_country"
-        app:layout_constraintHorizontal_bias="0.903"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text_view_details_activity_name_country"
-        style="@style/CityAndCountryStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margin_end_details_activity_country"
-        android:text="@string/details_city_activity_name_of_country"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/text_view_details_activity_temp"
@@ -32,43 +22,55 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/details_activity_temp"
-        android:textAlignment="center"
+        android:layout_marginTop="@dimen/text_size_details_activity_tempStyle"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_details_activity_temp_max"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_details_activity_description" />
 
     <TextView
-        android:id="@+id/text_view_details_activity_temp_min"
-        style="@style/TempStyle"
+        android:id="@+id/text_view_details_activity_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_details_activity_description"
+        android:textAlignment="center"
+        android:textSize="@dimen/text_size_details_activity_description"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_details_activity_temp"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_details_activity_name_country" />
+
+    <TextView
+        android:id="@+id/text_view_details_activity_name_country"
+        style="@style/CityAndCountryStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margin_end_details_activity_min_to_max"
-        android:text="@string/details_activity_min_temp"
-        app:layout_constraintEnd_toStartOf="@+id/text_view_details_activity_temp_max"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_details_activity_temp" />
+        android:paddingStart="@dimen/padding_details_activity_country"
+        android:text="@string/details_city_activity_name_of_country"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_details_activity_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_details_activity_name_city"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_view_details_activity_temp_max"
         style="@style/TempStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margin_end_details_activity_max_temp"
         android:text="@string/details_activity_max_temp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_details_activity_temp_min"
         app:layout_constraintTop_toBottomOf="@+id/text_view_details_activity_temp" />
 
     <TextView
-        android:id="@+id/text_view_details_activity_description"
+        android:id="@+id/text_view_details_activity_temp_min"
+        style="@style/TempStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_top_details_activity_description"
-        android:text="@string/text_details_activity_description"
-        android:textSize="@dimen/text_size_details_activity_description"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/details_activity_min_temp"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_details_activity_temp_max"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_details_activity_name_city" />
+        app:layout_constraintBottom_toBottomOf="@+id/text_view_details_activity_temp_max" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

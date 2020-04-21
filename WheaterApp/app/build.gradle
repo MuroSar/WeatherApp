@@ -45,4 +45,5 @@ dependencies {
     implementation lib.coroutinesAndroid
     implementation lib.coroutinesCore
     implementation lib.androidx_viewmodel
+    implementation lib.json
 }
