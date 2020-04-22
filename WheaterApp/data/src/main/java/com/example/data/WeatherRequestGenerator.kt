@@ -12,10 +12,7 @@ class WeatherRequestGenerator {
             .baseUrl(WEATHER_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
 
-    fun <S> createService(serviceClass: Class<S>): S {
-        val retrofit = builder.client(httpClient).build()
-        return retrofit.create(serviceClass)
-    }
+    fun <S> createService(serviceClass: Class<S>): S = builder.client(httpClient).build().create(serviceClass)
 
     companion object {
         const val API_KEY = "eaa0b49f2f1a2ceadfccae68c4e9d7e3"

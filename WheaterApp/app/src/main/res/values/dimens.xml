@@ -5,4 +5,13 @@
     <dimen name="margin_top_city">20dp</dimen>
     <dimen name="text_size_title_splash_activity">60sp</dimen>
     <dimen name="margin_bottom_splash_activity">70dp</dimen>
+    <dimen name="margin_end_details_activity_min_to_max">36dp</dimen>
+    <dimen name="text_size_details_activity_description">40sp</dimen>
+    <dimen name="margin_end_details_activity_max_temp">140dp</dimen>
+    <dimen name="margin_end_details_activity_country">40dp</dimen>
+    <dimen name="text_size_details_activity_cityAndCountryStyle">50sp</dimen>
+    <dimen name="text_size_details_activity_tempStyle">30sp</dimen>
+    <dimen name="margin_bottom_details_activity_tempStyle">64dp</dimen>
+    <dimen name="padding_details_activity_country">10dp</dimen>
+
 </resources>
