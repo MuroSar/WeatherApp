@@ -28,12 +28,14 @@ class DetailsCityViewModel(
 
     override fun getInformationFromAPI(id: Int) = viewModelScope.launch {
         mutableMainState.postValue(Event(Data(status = GETTING_DATA)))
-        when (val result = withContext(Dispatchers.IO) { getCityByIdUseCase.invoke(id) }) {
-            is Result.Success -> {
-                mutableMainState.postValue(Event(Data(status = UPLOADED_DATA, city = result.data)))
-            }
-            is Result.Failure -> {
-                mutableMainState.postValue(Event(Data(status = ERROR, error = result.exception)))
+        withContext(Dispatchers.IO) { getCityByIdUseCase.invoke(id) }.let {
+            when (it) {
+                is Result.Success -> {
+                    mutableMainState.postValue(Event(Data(status = UPLOADED_DATA, city = it.data)))
+                }
+                is Result.Failure -> {
+                    mutableMainState.postValue(Event(Data(status = ERROR, error = it.exception)))
+                }
             }
         }
     }
