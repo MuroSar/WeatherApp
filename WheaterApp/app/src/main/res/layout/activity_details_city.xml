@@ -1,76 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/details_activity_background">
 
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/text_view_details_activity_name_city"
         style="@style/CityAndCountryStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/details_city_activity_name_of_city"
-        app:layout_constraintBottom_toBottomOf="@+id/text_view_details_activity_name_country"
-        app:layout_constraintEnd_toStartOf="@+id/text_view_details_activity_name_country"
+        tools:text="@string/details_city_activity_name_of_city"
+        app:layout_constraintBottom_toBottomOf="@+id/text_view_details_activity_coma"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_details_activity_coma"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/text_view_details_activity_coma"
+        style="@style/CityAndCountryStyle"
+        android:text="@string/text_view_details_activity_coma"
+        app:layout_constraintBottom_toBottomOf="@+id/text_view_details_activity_name_country"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_details_activity_name_country"
+        app:layout_constraintStart_toEndOf="@+id/text_view_details_activity_name_city" />
+
+    <TextView
         android:id="@+id/text_view_details_activity_temp"
         style="@style/TempStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/details_activity_temp"
-        android:layout_marginTop="@dimen/text_size_details_activity_tempStyle"
+        tools:text="@string/details_activity_temp"
+        app:layout_constraintBottom_toBottomOf="@+id/text_view_details_activity_celsius"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_details_activity_celsius"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/text_view_details_activity_celsius"
+        style="@style/TempStyle"
+        android:text="@string/details_activity_celsius"
         app:layout_constraintBottom_toTopOf="@+id/text_view_details_activity_temp_max"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_details_activity_temp"
         app:layout_constraintTop_toBottomOf="@+id/text_view_details_activity_description" />
 
     <TextView
         android:id="@+id/text_view_details_activity_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/text_details_activity_description"
+        tools:text="@string/text_details_activity_description"
         android:textAlignment="center"
         android:textSize="@dimen/text_size_details_activity_description"
-        app:layout_constraintBottom_toTopOf="@+id/text_view_details_activity_temp"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_details_activity_celsius"
         app:layout_constraintTop_toBottomOf="@+id/text_view_details_activity_name_country" />
 
     <TextView
         android:id="@+id/text_view_details_activity_name_country"
         style="@style/CityAndCountryStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:paddingStart="@dimen/padding_details_activity_country"
-        android:text="@string/details_city_activity_name_of_country"
-        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="@string/details_city_activity_name_of_country"
         app:layout_constraintBottom_toTopOf="@+id/text_view_details_activity_description"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_view_details_activity_name_city"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text_view_details_activity_temp_max"
-        style="@style/TempStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/details_activity_max_temp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_view_details_activity_temp_min"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_details_activity_temp" />
+        app:layout_constraintStart_toEndOf="@+id/text_view_details_activity_coma"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/text_view_details_activity_temp_min"
         style="@style/TempStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/details_activity_min_temp"
-        app:layout_constraintEnd_toStartOf="@+id/text_view_details_activity_temp_max"
+        tools:text="@string/details_activity_min_temp"
+        app:layout_constraintBottom_toBottomOf="@+id/text_view_details_activity_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_details_activity_bar"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/text_view_details_activity_temp_max" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/text_view_details_activity_temp_max"
+        style="@style/TempStyle"
+        tools:text="@string/details_activity_max_temp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_details_activity_bar"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_details_activity_celsius" />
+
+    <TextView
+        android:id="@+id/text_view_details_activity_bar"
+        style="@style/TempStyle"
+        android:text="@string/details_activity_bar"
+        app:layout_constraintBottom_toBottomOf="@+id/text_view_details_activity_temp_max"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_details_activity_temp_max"
+        app:layout_constraintStart_toEndOf="@+id/text_view_details_activity_temp_min" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
