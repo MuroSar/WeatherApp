@@ -25,7 +25,6 @@
         android:background="@drawable/title_layout_corner_radius"
         android:padding="@dimen/padding_city_activity_ten_dp"
         android:text="@string/city_activity_search_text"
-        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent" />
@@ -36,7 +35,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/activity_city_enter_valid_text"
-        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/main_edit_text_country"
         app:layout_constraintTop_toBottomOf="@id/city_activity_weather_app_text_view" />
 
@@ -47,7 +45,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/activity_city_hint_text"
         android:textColor="@android:color/black"
-        android:textColorHint="#FFFFFF"
+        android:textColorHint="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/buttonDone"
         app:layout_constraintTop_toBottomOf="@+id/validCityTextView" />
 
