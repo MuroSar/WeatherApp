@@ -9,6 +9,7 @@
     </style>
     
     <style name="BasicSizeAndColor">
+        <item name="android:textAlignment">center</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">@dimen/text_size_city</item>
     </style>
@@ -27,6 +28,11 @@
     <style name="TempStyle">
         <item name="android:textSize">@dimen/text_size_details_activity_tempStyle</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
 </resources>

@@ -12,4 +12,5 @@
     <string name="details_activity_max_temp">max</string>
     <string name="details_activity_temp">30</string>
     <string name="text_details_activity_description">Sun</string>
+    <string name="city_activity_search_text">searcher</string>
 </resources>

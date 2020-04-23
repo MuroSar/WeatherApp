@@ -13,5 +13,6 @@
     <dimen name="text_size_details_activity_tempStyle">30sp</dimen>
     <dimen name="margin_bottom_details_activity_tempStyle">64dp</dimen>
     <dimen name="padding_details_activity_country">10dp</dimen>
+    <dimen name="padding_city_activity_ten_dp">10dp</dimen>
 
 </resources>
