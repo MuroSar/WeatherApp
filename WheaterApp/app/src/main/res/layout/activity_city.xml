@@ -9,11 +9,10 @@
     tools:context=".activities.CityMainActivity">
 
     <ImageView
+        style="@style/CityActivityBackgroundStyle"
         android:id="@+id/city_activity_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:src="@drawable/city_activity_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,7 +38,6 @@
         style="@style/AutoCompletableHintColors"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/activity_city_hint_text"
         app:layout_constraintBottom_toTopOf="@+id/buttonDone"
         app:layout_constraintTop_toBottomOf="@+id/validCityTextView" />
 
