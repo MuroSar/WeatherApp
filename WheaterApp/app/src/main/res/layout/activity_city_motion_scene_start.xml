@@ -18,15 +18,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/city_activity_weather_app_text_view"
-        style="@style/BasicSizeAndColor"
+        android:id="@+id/city_activity_search_text_view"
+        style="@style/CityActivityTextViewSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/title_layout_corner_radius"
         android:padding="@dimen/padding_city_activity_ten_dp"
         android:text="@string/city_activity_search_text"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
@@ -36,16 +34,14 @@
         android:layout_height="wrap_content"
         android:text="@string/activity_city_enter_valid_text"
         app:layout_constraintBottom_toTopOf="@+id/main_edit_text_country"
-        app:layout_constraintTop_toBottomOf="@id/city_activity_weather_app_text_view" />
+        app:layout_constraintTop_toBottomOf="@id/city_activity_search_text_view" />
 
     <AutoCompleteTextView
         android:id="@+id/main_edit_text_country"
-        style="@style/BasicSizeAndColor"
+        style="@style/AutoCompletableHintColors"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/activity_city_hint_text"
-        android:textColor="@android:color/black"
-        android:textColorHint="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/buttonDone"
         app:layout_constraintTop_toBottomOf="@+id/validCityTextView" />
 

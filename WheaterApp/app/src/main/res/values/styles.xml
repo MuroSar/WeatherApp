@@ -39,4 +39,13 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AutoCompletableHintColors" parent="@style/BasicSizeAndColor">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textColorHint">@android:color/white</item>
+    </style>
+
+    <style name="CityActivityTextViewSearch" parent="@style/BasicSizeAndColor">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
