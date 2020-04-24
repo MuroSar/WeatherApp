@@ -15,5 +15,6 @@
     <dimen name="padding_details_activity_country">10dp</dimen>
     <dimen name="padding_city_activity_ten_dp">10dp</dimen>
     <dimen name="margin_top_city_activity_one_hundred_dp">100dp</dimen>
+    <dimen name="margin_bottom_city_search_text_view">65dp</dimen>
 
 </resources>
