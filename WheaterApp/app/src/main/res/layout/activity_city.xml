@@ -22,8 +22,6 @@
         style="@style/CityActivityTextViewSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/title_layout_corner_radius"
-        android:padding="@dimen/padding_city_activity_ten_dp"
         android:text="@string/city_activity_search_text"
         app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -47,10 +45,9 @@
 
     <Button
         android:id="@+id/buttonDone"
-        style="@style/BasicSizeAndColor"
+        style="@style/CityActivityDoneButtonEndScene"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
         android:text="@string/activity_city_done_button"
         app:layout_constraintTop_toBottomOf="@+id/main_edit_text_country" />
 

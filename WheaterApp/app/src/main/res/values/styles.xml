@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    
+
     <style name="BasicSizeAndColor">
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@android:color/white</item>
@@ -45,7 +45,26 @@
     </style>
 
     <style name="CityActivityTextViewSearch" parent="@style/BasicSizeAndColor">
+        <item name="android:background">@drawable/title_layout_corner_radius</item>
+        <item name="android:padding">@dimen/padding_city_activity_ten_dp</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CityActivityTextViewSearchEnd" parent="@style/CityActivityTextViewSearch">
+        <item name="android:layout_marginBottom">@dimen/margin_bottom_city_search_text_view</item>
+    </style>
+
+    <style name="CityActivityMarginTextViewValidCityText" parent="@style/BasicSizeAndColor">
+        <item name="android:layout_marginTop">@dimen/margin_top_city_activity_one_hundred_dp</item>
+    </style>
+
+    <style name="AutoCompletableEndScene" parent="@style/AutoCompletableHintColors">
+        <item name="android:hint">@string/activity_city_hint_text</item>
+        <item name="android:layout_marginBottom">@dimen/margin_top_city_activity_one_hundred_dp</item>
+    </style>
+
+    <style name="CityActivityDoneButtonEndScene" parent="@style/BasicSizeAndColor">
+        <item name="android:background">@android:color/transparent</item>
     </style>
 </resources>
