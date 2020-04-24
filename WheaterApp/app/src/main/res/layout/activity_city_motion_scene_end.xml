@@ -1,41 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_blue"
-    app:layoutDescription="@xml/city_activity_scene"
     tools:context=".activities.CityMainActivity">
 
     <ImageView
-        style="@style/CityActivityBackgroundStyle"
         android:id="@+id/city_activity_background"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/CityActivityBackgroundStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/city_activity_search_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/city_activity_search_text_view"
-        style="@style/CityActivityTextViewSearch"
+        style="@style/CityActivityTextViewSearchEnd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/city_activity_search_text"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/main_edit_text_country" />
 
     <TextView
         android:id="@+id/validCityTextView"
-        style="@style/BasicSizeAndColor"
+        style="@style/CityActivityMarginTextViewValidCityText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/activity_city_enter_valid_text"
         app:layout_constraintBottom_toTopOf="@+id/main_edit_text_country"
-        app:layout_constraintTop_toBottomOf="@id/city_activity_search_text_view" />
+        app:layout_constraintTop_toBottomOf="@+id/city_activity_search_text_view" />
 
     <AutoCompleteTextView
         android:id="@+id/main_edit_text_country"
-        style="@style/AutoCompletableHintColors"
+        style="@style/AutoCompletableEndScene"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/buttonDone"
@@ -47,6 +48,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/activity_city_done_button"
-        app:layout_constraintTop_toBottomOf="@+id/main_edit_text_country" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

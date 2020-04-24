@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_blue"
-    app:layoutDescription="@xml/city_activity_scene"
     tools:context=".activities.CityMainActivity">
 
     <ImageView
-        style="@style/CityActivityBackgroundStyle"
         android:id="@+id/city_activity_background"
+        style="@style/CityActivityBackgroundStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
