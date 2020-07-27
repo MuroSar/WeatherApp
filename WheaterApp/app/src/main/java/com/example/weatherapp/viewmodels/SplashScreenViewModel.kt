@@ -1,5 +1,6 @@
 package com.example.weatherapp.viewmodels
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,12 +19,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
 
-class SplashScreenViewModel(
-        private val createCityListUseCase: CreateCityListUseCase,
-        private val JSONDataUseCase: JSONDataUseCase
+class SplashScreenViewModel @ViewModelInject constructor(
+    private val createCityListUseCase: CreateCityListUseCase,
+    private val JSONDataUseCase: JSONDataUseCase
 ) : ViewModel(), SplashScreenContract.ViewModel {
     private val mutableMainState: MutableLiveData<Event<Data<City>>> = MutableLiveData()
-
     val mainState: LiveData<Event<Data<City>>>
         get() {
             return mutableMainState

@@ -7,8 +7,9 @@ import com.example.domain.utils.COUNTRY_AR
 import com.example.domain.utils.ID
 import com.example.domain.utils.NAME
 import org.json.JSONArray
+import javax.inject.Inject
 
-class CreateCityListUseCaseImpl : CreateCityListUseCase {
+class CreateCityListUseCaseImpl @Inject constructor() : CreateCityListUseCase {
 
     override fun invoke(listOfCity: MutableList<City>, jsonArray: JSONArray): MutableList<String> {
         val stringList = mutableListOf<String>()
@@ -16,9 +17,9 @@ class CreateCityListUseCaseImpl : CreateCityListUseCase {
             val jsonObject = jsonArray.getJSONObject(i)
             if (jsonObject.get(COUNTRY).equals(COUNTRY_AR)) {
                 val city = City(
-                        jsonObject.get(ID).toString().toInt(),
-                        jsonObject.get(NAME).toString(),
-                        jsonObject.get(COUNTRY).toString()
+                    jsonObject.get(ID).toString().toInt(),
+                    jsonObject.get(NAME).toString(),
+                    jsonObject.get(COUNTRY).toString()
                 )
                 stringList.add(city.name)
                 listOfCity.add(city)

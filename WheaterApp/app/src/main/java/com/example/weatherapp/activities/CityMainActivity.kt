@@ -3,6 +3,7 @@ package com.example.weatherapp.activities
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.domain.entities.City
@@ -14,13 +15,14 @@ import com.example.weatherapp.utils.Status.INIT
 import com.example.weatherapp.utils.startActivity
 import com.example.weatherapp.viewmodels.CityMainViewModel
 import com.example.weatherapp.viewmodels.CityMainViewModel.Companion.NAME
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_city.buttonDone
 import kotlinx.android.synthetic.main.activity_city.main_edit_text_country
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@AndroidEntryPoint
 class CityMainActivity : AppCompatActivity() {
 
-    private val viewModel by viewModel<CityMainViewModel>()
+    private val viewModel: CityMainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
