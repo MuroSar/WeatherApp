@@ -27,7 +27,9 @@ alt text
 To learn about different ways of implement Clean Architecture, visit: https://docs.google.com/presentation/d/1aBtccGraTyggnIP6Nn7m8uGfBgreKWIk-2JuLafKAds/edit#slide=id.p4
 
 ## Dependency Injection - Dagger - Hilt: 
-Dependency injection is a programming technique that makes a class independent of its dependencies by decoupling the usage of an object from its creation. It’s derived from the fifth principle of the famous object-oriented programming principles S.O.L.I.D (Dependency Inversion: a class should concentrate on fulfilling its own responsibilities and should not be concerned with creating objects to fulfill those responsibilities). This layer was implemented using **Hilt**.
+Dependency injection is a programming technique that makes a class independent of its dependencies by decoupling the usage of an object from its creation. It’s derived from the fifth principle of the famous object-oriented programming principles S.O.L.I.D (Dependency Inversion: a class should concentrate on fulfilling its own responsibilities and should not be concerned with creating objects to fulfill those responsibilities). 
+If you need to know more of Hilt you can read this: https://developer.android.com/training/dependency-injection/hilt-android
+This layer was implemented using **Hilt**.
 
 All apps that use Hilt must contain an Application class that is annotated with **@HiltAndroidApp.**
 **@HiltAndroidApp** triggers Hilt's code generation, including a base class for your application that serves as the application-level dependency container.
@@ -90,3 +92,5 @@ Dispatchers:
 
 * Dispatchers.Default – is used by all standard builders by default. It uses a common pool of shared background threads. This is an appropriate choice for compute-intensive coroutines that consume CPU resources.
 * Dispatchers.IO – uses a shared pool of on-demand created threads and is designed for offloading of IO-intensive blocking operations (like file I/O and blocking socket I/O).
+
+If you need to know more of Hilt you can read this: https://developer.android.com/kotlin/coroutines
