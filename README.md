@@ -2,6 +2,7 @@
 
 ## Kotlin + MVVM + Clean Architecture + Dagger - Hilt + Coroutines
 To do the project Kotlin was used as a programming language and MVVM (Model - View - ViewModel) as a software architectural pattern.
+Here you have a link to a PPT how explains more of Hilt : https://docs.google.com/presentation/d/1n4P6LfQ3aZ5PhWgiP-2shBm4u2vOlvWlWKuf1VuFG5c/edit#slide=id.g8e6f9f3e70_0_7
 
 ## MVVM (Model - View - ViewModel):
 The Model View ViewModel pattern helps with the separation of concerns, dividing the user interface with the logic behind. The decision to use this pattern is mainly based on the support Google has been giving to it. Moreover, MVVM is vastly used in today’s Android development and combines very well with Android Architecture Components like LiveData and DataBindings.
