@@ -2,6 +2,7 @@ package com.example.weatherapp.activities
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.domain.entities.City
@@ -12,11 +13,12 @@ import com.example.weatherapp.utils.Status.CHARGED_JSON
 import com.example.weatherapp.utils.Status.INIT
 import com.example.weatherapp.utils.startActivity
 import com.example.weatherapp.viewmodels.SplashScreenViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashScreenActivity : AppCompatActivity() {
 
-    private val viewModel by viewModel<SplashScreenViewModel>()
+    private val viewModel: SplashScreenViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

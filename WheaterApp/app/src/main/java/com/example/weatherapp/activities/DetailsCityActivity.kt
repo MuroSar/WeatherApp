@@ -3,6 +3,7 @@ package com.example.weatherapp.activities
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.domain.entities.City
@@ -15,6 +16,7 @@ import com.example.weatherapp.utils.Status.UPLOADED_DATA
 import com.example.weatherapp.utils.startActivity
 import com.example.weatherapp.viewmodels.CityMainViewModel.Companion.NAME
 import com.example.weatherapp.viewmodels.DetailsCityViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_details_city.progressBar2
 import kotlinx.android.synthetic.main.activity_details_city.text_view_details_activity_bar
 import kotlinx.android.synthetic.main.activity_details_city.text_view_details_activity_celsius
@@ -25,11 +27,11 @@ import kotlinx.android.synthetic.main.activity_details_city.text_view_details_ac
 import kotlinx.android.synthetic.main.activity_details_city.text_view_details_activity_temp
 import kotlinx.android.synthetic.main.activity_details_city.text_view_details_activity_temp_max
 import kotlinx.android.synthetic.main.activity_details_city.text_view_details_activity_temp_min
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@AndroidEntryPoint
 class DetailsCityActivity : AppCompatActivity() {
 
-    private val viewModel by viewModel<DetailsCityViewModel>()
+    private val viewModel: DetailsCityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -6,12 +6,12 @@ import com.example.data.services.api.WeatherApi
 import com.example.domain.entities.City
 import com.example.domain.servicies.WeatherCityService
 import com.example.domain.utils.Result
+import javax.inject.Inject
 
-class WeatherCityServiceImpl : WeatherCityService {
+class WeatherCityServiceImpl @Inject constructor() : WeatherCityService {
 
     private val api: WeatherRequestGenerator = WeatherRequestGenerator()
     private val mapper: WeatherCityMapperService = WeatherCityMapperService()
-
     override fun getCityById(id: Int): Result<City> {
         val queryHashMap = LinkedHashMap<String, String>()
         queryHashMap.put(ID, id.toString())

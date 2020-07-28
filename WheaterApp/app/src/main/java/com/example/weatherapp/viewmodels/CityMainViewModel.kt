@@ -1,5 +1,6 @@
 package com.example.weatherapp.viewmodels
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,13 +13,12 @@ import com.example.weatherapp.utils.Event
 import com.example.weatherapp.utils.Status.DONE
 import com.example.weatherapp.utils.Status.INIT
 
-class CityMainViewModel(
-        private val getCityByNameUseCase: GetCityByNameUseCase,
-        private val JSONDataUseCase: JSONDataUseCase
+class CityMainViewModel @ViewModelInject constructor(
+    private val getCityByNameUseCase: GetCityByNameUseCase,
+    private val JSONDataUseCase: JSONDataUseCase
 ) : ViewModel(), CityContract.ViewModel {
 
     private val mutableMainState: MutableLiveData<Event<Data<City>>> = MutableLiveData()
-
     val mainState: LiveData<Event<Data<City>>>
         get() {
             return mutableMainState

@@ -10,6 +10,12 @@ data class Data<RequestData>(
         var city: City = City()
 )
 
-enum class Status { INIT, CHARGED_JSON, DONE,
-                    GETTING_DATA, UPLOADED_DATA, ERROR}
+enum class Status {
+        INIT,
+        CHARGED_JSON,
+        DONE,
+        GETTING_DATA,
+        UPLOADED_DATA,
+        ERROR
+}
 

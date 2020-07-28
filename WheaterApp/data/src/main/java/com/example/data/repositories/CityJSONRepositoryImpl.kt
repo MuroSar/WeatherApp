@@ -2,9 +2,9 @@ package com.example.data.repositories
 
 import com.example.data.utils.JSONData
 import com.example.domain.repositories.CityJSONRepository
+import javax.inject.Inject
 
-class CityJSONRepositoryImpl : CityJSONRepository {
-
+class CityJSONRepositoryImpl @Inject constructor() : CityJSONRepository {
     override fun getJSONData() = JSONData.getJSON()
 
     override fun isNotEmptyData(): Boolean {
