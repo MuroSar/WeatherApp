@@ -2,7 +2,6 @@
 
 ## Kotlin + MVVM + Clean Architecture + Dagger - Hilt + Coroutines
 To do the project Kotlin was used as a programming language and MVVM (Model - View - ViewModel) as a software architectural pattern.
-Here you have a link to a PPT how explains more of Hilt : https://docs.google.com/presentation/d/1n4P6LfQ3aZ5PhWgiP-2shBm4u2vOlvWlWKuf1VuFG5c/edit#slide=id.g8e6f9f3e70_0_7
 
 ## MVVM (Model - View - ViewModel):
 The Model View ViewModel pattern helps with the separation of concerns, dividing the user interface with the logic behind. The decision to use this pattern is mainly based on the support Google has been giving to it. Moreover, MVVM is vastly used in today’s Android development and combines very well with Android Architecture Components like LiveData and DataBindings.
@@ -11,8 +10,6 @@ The Model View ViewModel pattern helps with the separation of concerns, dividing
 * View: The view in our implementation of MVVM is actually a Fragment or an Activity. The views enclose everything needed to handle the user interface. They observe the ViewModel, using LiveData components, and react to its changes as they need to.
 * ViewModel: The responsable of the relationship between the data and the user interface of the application. The ViewModel has the logic to convert what the use cases provide into information that the view can understand and present. Furthermore, it has the responsability and the logic to react to the user’s input, and call the necessary use cases. The most useful of the Android’s ViewModel class is its lifecycle consciousness. It only communicates to the View with LiveData components, so it does not need a reference to a contexts or an activity: it can keep the information alive even against configuration changes like screen rotations or calls to background.
 alt text
-
-If you want to read and understad at all MVVM, just visit: https://docs.google.com/presentation/d/1JkepsjABKhOmQr7bc62mL8vd-3UqbyklceHfJn4K0rU/edit?ts=5daa0000#slide=id.g61baf37ef4_1_33
 
 ## Clean Architecture:
 Clean architecture attempts to provide a methodology to use in coding in order to make it easier to develop quality code that performs better is easier to change, update and has fewer dependencies. An important goal of clean architecture is to provide developers with a way to organize code in such a way that it encapsulates the business logic but keeps it separate from the delivery mechanism.
@@ -23,8 +20,6 @@ Layers of Clean Architecture used in this project:
 * Data: Would dispense the required data for the application to the domain layer by implementing interface exposed by the domain.
 * Presentation: Would include both domain and data layer and is android specific which executes the UI logic.
 alt text
-
-To learn about different ways of implement Clean Architecture, visit: https://docs.google.com/presentation/d/1aBtccGraTyggnIP6Nn7m8uGfBgreKWIk-2JuLafKAds/edit#slide=id.p4
 
 ## Dependency Injection - Dagger - Hilt: 
 Dependency injection is a programming technique that makes a class independent of its dependencies by decoupling the usage of an object from its creation. It’s derived from the fifth principle of the famous object-oriented programming principles S.O.L.I.D (Dependency Inversion: a class should concentrate on fulfilling its own responsibilities and should not be concerned with creating objects to fulfill those responsibilities). 
